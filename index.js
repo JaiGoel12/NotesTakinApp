@@ -12,7 +12,9 @@ app.use(express.static(path.join(__dirname,"public")));
 
 
 app.get("/", (req, res) => {
-    fs.readdir('./files', (err, files) => {
+    const filesDir = path.join(__dirname, 'files'); // Assuming 'files' is a directory within your project
+
+    fs.readdir(filesDir, (err, files) => {
         if (err) {
             return res.status(500).send("Unable to read files");
         }
